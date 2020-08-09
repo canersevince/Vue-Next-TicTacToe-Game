@@ -1,10 +1,13 @@
-import Vue from 'vue'
+import { createApp } from 'vue';
 import App from './App.vue'
 import store from './store'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGamepad } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-Vue.config.productionTip = false
-
-new Vue({
-  store,
-  render: h => h(App)
-}).$mount('#app')
+library.add(faGamepad)
+createApp(App)
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .use(store)
+    .provide('store', store)
+    .mount('#app');
