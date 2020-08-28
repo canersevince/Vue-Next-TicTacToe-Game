@@ -1,4 +1,4 @@
-# xox_game / Simple TicTacToe game made with Vue Next
+# xox_game / Simple Tic Tac Toe game made with Vue Next
 
 
 Play at https://canersevince.github.io/Vue-Next-TicTacToe-Game/
