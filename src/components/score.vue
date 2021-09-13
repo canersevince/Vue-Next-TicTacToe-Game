@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, reactive} from "vue";
+    import {defineComponent} from "vue";
     import store from '../store/index'
 
     export default defineComponent({
