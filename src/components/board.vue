@@ -1,28 +1,26 @@
 <template>
     <div class="main" style="margin-top: 10px">
-        <div @click="playerAction(i)" class="tile" v-for="(tile, i) in store.board"
+        <div @click="playerAction(i)" class="tile" v-for="(tile, i) in state.board"
              :style="{ cursor: isClickable(tile)}" :key="i">
             <transition name="flip">
-                <span class="xox" v-if="tile.length > 0">{{tile}}</span>
+                <span class="xox" v-if="tile != ''">{{tile}}</span>
                 <span v-else></span>
             </transition>
         </div>
     </div>
 </template>
 <script lang="ts">
-    import {defineComponent, computed, reactive} from "vue";
+    import {defineComponent} from "vue";
     import store from '../store/index'
 
     export default defineComponent({
         name: "board",
         setup() {
 
-            const state = reactive({
-                store: computed(() => store.state),
-            })
+            const state = store.state
 
             function isClickable(tile: any) {
-                if (!state.store.playersTurn) return 'not-allowed'
+                if (!state.playersTurn) return 'not-allowed'
                 if (tile.length == 0) {
                     return 'pointer'
                 }
@@ -33,7 +31,7 @@
                 store.dispatch('playerClick', i)
             }
             return {
-                store: state.store,
+                state,
                 playerAction,
                 isClickable
             }

@@ -2,7 +2,7 @@
     <header>
         <div>
             <transition mode="out-in" name="zoom">
-                <h2 v-if="store.playersTurn">Your Turn</h2>
+                <h2 v-if="state.playersTurn">Your Turn</h2>
                 <h2 v-else>
                     Opponents Turn
                 </h2>
@@ -13,28 +13,25 @@
                 <h2>
                     You
                 </h2>
-                <p class="score player">{{store.playerWinCount}}</p>
+                <p class="score player">{{state.playerWinCount}}</p>
             </div>
             <div>
                 <h2>Comp.</h2>
-                <p class="score computer">{{store.computerWinCount}}</p>
+                <p class="score computer">{{state.computerWinCount}}</p>
             </div>
         </section>
     </header>
 </template>
 
 <script lang="ts">
-    import {defineComponent, computed, reactive} from "vue";
+    import {defineComponent} from "vue";
     import store from '../store/index'
 
     export default defineComponent({
         name: "score",
         setup() {
-            const state = reactive({
-                store: computed(() => store.state),
-            })
             return {
-                store: state.store
+                state: store.state
             }
         }
     })
